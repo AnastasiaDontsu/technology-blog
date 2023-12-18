@@ -7,12 +7,17 @@ function Yourprofile() {
   const schema = yup.object().shape({
     firstName: yup
       .string()
-      .matches(/^([0-9]*)$/, "First Name should not contain numbers")
+      .matches(/^[^\d]*$/, "First Name should not contain numbers")
       .required("First Name is a required field"),
     lastName: yup
       .string()
-      .matches(/^([0-9]*)$/, "Last Name should not contain numbers")
+      .matches(/^[^\d]*$/, "Last Name should not contain numbers")
       .required("Last Name is a required field"),
+    email: yup
+      .string()
+      .required("Email - обязательное поле")
+      .matches(/[A-Za-z]{3}/, "Email не соответствует обычному формату"),
+    password: yup.string().required("Пароль - обязательное поле"),
   });
 
   const {
@@ -59,14 +64,15 @@ function Yourprofile() {
                   First Name
                 </label>
                 <input
-                  {...register("name", {
+                  placeholder="First Name"
+                  {...register("firstName", {
                     required: true,
                   })}
-                  placeholder="First Name"
-                  errors={!!errors.firstName}
-                  helperText={errors.firstName?.message}
                   className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
+                {errors.firstName && (
+                  <div style={{ color: "red" }}>{errors.firstName.message}</div>
+                )}
               </div>
 
               <div>
@@ -74,14 +80,15 @@ function Yourprofile() {
                   Last name
                 </label>
                 <input
-                  {...register("Lastname", {
+                  placeholder="Last name"
+                  {...register("lastName", {
                     required: true,
                   })}
-                  placeholder=" Last name"
-                  errors={!!errors.Lastname}
-                  helperText={errors.Lastname?.message}
                   className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
+                {errors.lastName && (
+                  <div style={{ color: "red" }}>{errors.lastName.message}</div>
+                )}
               </div>
 
               <div>
@@ -121,13 +128,13 @@ function Yourprofile() {
                 </label>
                 <input
                   className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                  {...register("name", {
+                  {...register("password", {
                     required: "Name is a required field",
                   })}
                   placeholder="Name"
                 />
-                {errors.name && (
-                  <div style={{ color: "red" }}>{errors.name.message}</div>
+                {errors.password && (
+                  <div style={{ color: "red" }}>{errors.password.message}</div>
                 )}
               </div>
 
