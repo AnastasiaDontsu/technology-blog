@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { parsePhoneNumberFromString } from "libphonenumber-js";
 
 function Yourprofile() {
   const schema = yup.object().shape({
@@ -19,7 +20,14 @@ function Yourprofile() {
       .matches(/[A-Za-z]{3}/, "Email не соответствует обычному формату"),
     password: yup.string().required("Пароль - обязательное поле"),
   });
+  const normalizePhoneNumber = (value) => {
+    const phoneNumber = parsePhoneNumberFromString(value);
+    if (!phoneNumber) {
+      return value;
+    }
 
+    return phoneNumber.formatInternational();
+  };
   const {
     register,
     handleSubmit,
@@ -98,6 +106,11 @@ function Yourprofile() {
                 <input
                   type="text"
                   placeholder="XXX-XX-XXXX-XXX"
+                  onChange={(event) => {
+                    event.target.value = normalizePhoneNumber(
+                      event.target.value
+                    );
+                  }}
                   className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
               </div>
