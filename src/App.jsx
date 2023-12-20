@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
-
 import About from "./components/About.jsx";
 import Yourprofile from "./components/Yourprofile.jsx";
 import Signout from "./components/Signout.jsx";
