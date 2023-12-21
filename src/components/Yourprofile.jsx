@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import PhoneInput from "react-phone-number-input";
 import { yupResolver } from "@hookform/resolvers/yup";
-import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 import * as yup from "yup";
 
 function Yourprofile() {
@@ -21,7 +21,11 @@ function Yourprofile() {
       .matches(/[A-Za-z]{3}/, "Email не соответствует обычному формату"),
     password: yup.string().required("Пароль - обязательное поле"),
   });
-  const [value, setValue] = useState();
+  const [phone, setPhone] = useState("");
+
+  const handlePhoneChange = (newPhone) => {
+    setPhone(newPhone);
+  };
   const {
     register,
     handleSubmit,
@@ -70,39 +74,44 @@ function Yourprofile() {
                   {...register("firstName", {
                     required: true,
                   })}
-                  className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
                 {errors.firstName && (
                   <div style={{ color: "red" }}>{errors.firstName.message}</div>
                 )}
               </div>
-
               <div>
                 <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
-                  Last name
+                  Last Name
                 </label>
                 <input
-                  placeholder="Last name"
-                  {...register("lastName", {
+                  placeholder="Last Name"
+                  {...register("last Name", {
                     required: true,
                   })}
-                  className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
                 {errors.lastName && (
                   <div style={{ color: "red" }}>{errors.lastName.message}</div>
                 )}
               </div>
-
-              <div>
+              <div className="your-container-class">
                 <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
                   Phone number
                 </label>
+
                 <PhoneInput
-                  type="text"
-                  placeholder="XXX-XX-XXXX-XXX"
-                  value={value}
-                  onChange={setValue}
-                  className=" rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-bleck-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  country="us"
+                  value={phone}
+                  onChange={handlePhoneChange}
+                  inputProps={{
+                    style: {
+                      height: "50px",
+                      width: "100%",
+                      backgroundColor: "inherit",
+                      color: "white",
+                    },
+                  }}
                 />
               </div>
 
@@ -111,7 +120,7 @@ function Yourprofile() {
                   Email address
                 </label>
                 <input
-                  className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300  focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                   {...register("email", {
                     required: "Email is a required field",
                     pattern: {
@@ -131,7 +140,7 @@ function Yourprofile() {
                   Password
                 </label>
                 <input
-                  className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                   {...register("password", {
                     required: "Name is a required field",
                   })}
@@ -149,7 +158,7 @@ function Yourprofile() {
                 <input
                   type="password"
                   placeholder="Enter your password"
-                  className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300  focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
               </div>
 
