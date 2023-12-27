@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
 import About from "./components/About.jsx";
 import Yourprofile from "./components/Yourprofile.jsx";
-import Signout from "./components/Signout.jsx";
+import Signup from "./components/ Signup.jsx";
 import Footer from "./components/Footer.jsx";
 
 const App = () => {
@@ -14,7 +14,7 @@ const App = () => {
       <Routes>
         <Route path="/about" element={<About />} />
         <Route path="/your-profile" element={<Yourprofile />} />
-        <Route path="/Sign-out" element={<Signout />} />
+        <Route path="/Sign-out" element={<Signup />} />
       </Routes>
     </div>
   );
