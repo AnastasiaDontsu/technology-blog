@@ -17,9 +17,9 @@ function Yourprofile() {
       .required("Last Name is a required field"),
     email: yup
       .string()
-      .required("Email - обязательное поле")
-      .matches(/[A-Za-z]{3}/, "Email не соответствует обычному формату"),
-    password: yup.string().required("Пароль - обязательное поле"),
+      .required("Email is a required field")
+      .email("Enter a valid email address"), // Use the email validation provided by Yup
+    password: yup.string().required("Password is a required field"),
   });
   const [phone, setPhone] = useState("");
 
