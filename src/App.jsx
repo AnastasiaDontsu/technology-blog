@@ -1,12 +1,12 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar.jsx";
-import About from "./components/About.jsx";
-import Yourprofile from "./components/Yourprofile.jsx";
-import Signin from "./components/ Signin.jsx";
-import Home from "./components/Home.jsx";
-import Technology from "./components/Technology.jsx";
-//import Footer from "./components/Footer.jsx";
+import Navbar from "components/Navbar";
+import About from "components/About";
+import Yourprofile from "components/Yourprofile";
+import Signin from "components/ Signin";
+import Home from "components/Home";
+import Technology from "components/Technology";
+//import Footer from "components/Footer";
 
 const App = () => {
   return (
