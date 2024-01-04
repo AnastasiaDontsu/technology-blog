@@ -1,0 +1,27 @@
+div.Technology {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: rgb(15 23 42);
+  color: rgb(38, 10, 10);
+  .recharts-text {
+    fill: rgb(56, 177, 107);
+  }
+}
+
+.Technology .recharts-line-active .recharts-dot.recharts-line-dot {
+  fill: rgb(246, 246, 246);
+  stroke: rgb(29, 59, 57);
+}
+.custom-text {
+  color: black;
+  text-align: center;
+  font-size: 30px;
+  margin-top: 10px; /* Отступ сверху */
+  margin-bottom: 10px; /* Отступ снизу */
+  @media only screen and (max-width: 600px) {
+    font-size: 16px; /* Изменение размера шрифта для мобильных устройств */
+    margin-top: 5px; /* Изменение отступа сверху для мобильных устройств */
+    margin-bottom: 5px; /* Изменение отступа снизу для мобильных устройств */
+  }
+}
