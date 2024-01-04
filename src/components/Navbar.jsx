@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 const navigation = [
-  { name: "Technology", href: "technology", current: true },
+  { name: "Home", href: "/", current: false },
+  { name: "Technology", href: "technology", current: false },
   { name: "About", href: "about", current: false },
-  { name: "Projects", href: "3", current: false },
-  { name: "Calendar", href: "4", current: false },
 ];
 
 function classNames(...classes) {
@@ -116,13 +115,13 @@ export default function Navbar() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="Sign-out"
+                            href="Sign-in"
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
-                            Sign out
+                            Sign-in
                           </a>
                         )}
                       </Menu.Item>
