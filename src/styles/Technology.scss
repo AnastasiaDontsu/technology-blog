@@ -17,11 +17,11 @@ div.Technology {
   color: black;
   text-align: center;
   font-size: 30px;
-  margin-top: 10px; /* Отступ сверху */
-  margin-bottom: 10px; /* Отступ снизу */
+  margin-top: 10px;
+  margin-bottom: 10px;
   @media only screen and (max-width: 600px) {
-    font-size: 16px; /* Изменение размера шрифта для мобильных устройств */
-    margin-top: 5px; /* Изменение отступа сверху для мобильных устройств */
-    margin-bottom: 5px; /* Изменение отступа снизу для мобильных устройств */
+    font-size: 16px;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 }
